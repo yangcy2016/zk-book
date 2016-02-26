@@ -8,13 +8,13 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.Watcher.Event.EventType;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
 
 public class ZKCreateAPISync implements Watcher{
 	private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
 
+	@Override
 	public void process(WatchedEvent event) {
 		System.out.println("Receive watch event:"+event);
 		if(KeeperState.SyncConnected==event.getState()){

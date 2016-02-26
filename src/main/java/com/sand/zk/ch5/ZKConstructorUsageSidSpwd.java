@@ -11,6 +11,7 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 public class ZKConstructorUsageSidSpwd implements Watcher{
 	private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
 
+	@Override
 	public void process(WatchedEvent event) {
 		System.out.println("Receive watched event:"+event);
 		if(KeeperState.SyncConnected==event.getState()){
